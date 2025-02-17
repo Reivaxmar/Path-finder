@@ -1,20 +1,22 @@
 #include "PathCalculator.h"
 
 PathCalculator::PathCalculator(Vector2i _siz)
-    : m_grid(_siz.x, vector<Room>(_siz.y)), m_roomSize(_siz) {
+    : m_grid(_siz.x, vector<Room>(_siz.y)), m_roomSize(_siz), dp(_siz.x, vector<int>(_siz.y, 0)) {
 
 }
 
-void PathCalculator::Update(RenderWindow& window) {
+void PathCalculator::Update() {
     queue<pair<Vector2i, int>> q;
     q.push({Vector2i(0, 0), 1});
     
-    vector<vector<int>> dp(m_roomSize.x, vector<int>(m_roomSize.y, 0));
+    dp.clear();
+    dp.resize(m_roomSize.x, vector<int>(m_roomSize.y, 0));
     vector<vector<bool>> visited(m_roomSize.x, vector<bool>(m_roomSize.y, false));
     
     dp[0][0] = 1;
+    visited[0][0] = true;
 
-    vector<Vector2i> toAdd = {Vector2i(-1, 0), Vector2i(0, -1), Vector2i(1, 0), Vector2i(0, 1)};
+    vector<Vector2i> toAdd = {/*Vector2i(-1, 0), Vector2i(0, -1), */Vector2i(1, 0), Vector2i(0, 1)};
 
     while(!q.empty()) {
         // Get the current one in the queue
@@ -43,10 +45,6 @@ void PathCalculator::Update(RenderWindow& window) {
     cout << "Num paths: " << dp[m_roomSize.x-1][m_roomSize.y-1] << endl;
 }
 
-void PathCalculator::Draw(RenderWindow& window) {
-
-}
-
 Vector2i PathCalculator::getSize() {
     return m_roomSize;
 }
@@ -58,6 +56,4 @@ vector<int> PathCalculator::CalculatePaths() {
 Room& PathCalculator::getRoom(Vector2i pos) {
     if(pos.x >= 0 && pos.y >= 0 && pos.x < m_roomSize.x && pos.y < m_roomSize.y)
         return m_grid[pos.x][pos.y];
-        
-    
 }

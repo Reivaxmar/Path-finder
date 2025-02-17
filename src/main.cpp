@@ -8,9 +8,9 @@ using namespace std;
 
 int main() {
     // cout << "Enter width and height: ";
-    // int n;
-    // cin >> n;
-    int n = 5;
+    int n;
+    cin >> n;
+    // int n = 7;
 
     PathCalculator pthCalc(Vector2i(n, n));
     PathRenderer pthRend(Vector2i(n, n));

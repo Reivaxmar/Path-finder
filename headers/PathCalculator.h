@@ -16,10 +16,10 @@ struct Room {
     bool up, down, left, right;
     Room(Vector2i _pos = Vector2i(0, 0)) {
         pos = _pos;
-        up = true;
-        down = true;
-        left = true;
-        right = true;
+        up = false;
+        down = false;
+        left = false;
+        right = false;
     }
 
     bool isOpen(Vector2i _next) {
@@ -35,11 +35,11 @@ struct Room {
 class PathCalculator {
 public:
     PathCalculator(Vector2i _siz);
-    void Update(RenderWindow& window);
-    void Draw(RenderWindow& window);
+    void Update();
     vector<int> CalculatePaths();
     Vector2i getSize();
     Room& getRoom(Vector2i pos);
+    vector<vector<int>> dp;
 private:
     Vector2i m_roomSize;
     vector<vector<Room>> m_grid;

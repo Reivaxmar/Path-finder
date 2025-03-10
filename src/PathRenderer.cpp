@@ -22,7 +22,7 @@ void PathRenderer::Draw(RenderWindow& window) {
     for(int x = 0; x < m_pathCalc.getSize().x; x++) {
         for(int y = 0; y < m_pathCalc.getSize().y; y++) {
             text.setPosition(Vector2f(x * tileSize.x, y * tileSize.y));
-            text.setString(to_string(m_pathCalc.dp[x][y]));
+            // text.setString(to_string(m_pathCalc.dp[x][y]));
             window.draw(text);
             // Get the tile pos
             Vector2f pos = Vector2f(x * tileSize.x, (y+1) * tileSize.y);
@@ -33,8 +33,10 @@ void PathRenderer::Draw(RenderWindow& window) {
                Mouse::isButtonPressed(Mouse::Left) && !m_LeftBefore) {
                 m_pathCalc.getRoom(Vector2i(x, y)).down ^= true;
                 update = true;
-                if(x+1 < m_pathCalc.getSize().x)
-                    m_pathCalc.getRoom(Vector2i(x+1, y)).up ^= true;
+                if(y+1 < m_pathCalc.getSize().y)
+                    // cout << "SET UP!!!";
+                    m_pathCalc.getRoom(Vector2i(x, y+1)).up ^= true;
+                    // cout << " It is: " << m_pathCalc.getRoom(Vector2i(x, y+1)).up << endl;
             }
             // Then, check if it's open
             if(m_pathCalc.getRoom(Vector2i(x, y)).down) {
@@ -56,8 +58,8 @@ void PathRenderer::Draw(RenderWindow& window) {
                Mouse::isButtonPressed(Mouse::Left) && !m_LeftBefore) {
                 m_pathCalc.getRoom(Vector2i(x, y)).right ^= true;
                 update = true;
-                if(y+1 < m_pathCalc.getSize().y)
-                    m_pathCalc.getRoom(Vector2i(x, y+1)).left ^= true;
+                if(x+1 < m_pathCalc.getSize().x)
+                    m_pathCalc.getRoom(Vector2i(x+1, y)).left ^= true;
             }
             // Then, check if it's open
             if(m_pathCalc.getRoom(Vector2i(x, y)).right) {

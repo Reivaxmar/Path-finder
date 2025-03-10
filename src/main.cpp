@@ -9,14 +9,16 @@ using namespace std;
 int main() {
     // cout << "Enter width and height: ";
     int n;
+    cout << "Enter size of the grid: ";
     cin >> n;
     // int n = 7;
 
-    PathCalculator pthCalc(Vector2i(n, n));
+    // PathCalculator pthCalc(Vector2i(n, n));
     PathRenderer pthRend(Vector2i(n, n));
 
     RenderWindow window(VideoMode(500, 500), "Pathfinder");
     window.setFramerateLimit(60);
+    window.requestFocus();
 
     while(window.isOpen()) {
         for(Event ev;window.pollEvent(ev);) {

@@ -10,7 +10,7 @@ class PathRenderer {
 public:
     PathRenderer(Vector2i _siz);
     void Draw(RenderWindow& window);
-    void Update();
+    void Update(RenderWindow& window);
 private:
     PathCalculator m_pathCalc;
     bool m_LeftBefore;

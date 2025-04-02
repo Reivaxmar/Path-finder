@@ -1,5 +1,5 @@
-# Project title
-This is just a template for making projects. Feel free to use.
+# Pathfinder
+This project finds the shortest and longest path in a NxN grid, where connections between tiles can be open or closed.
 
 ## Usage
 ### Prerequisites
@@ -10,20 +10,19 @@ Just some basic stuff:
 ### Building the project
 You can download a zip file or use git:
 ```bash
-> mkdir ./project
-> cd ./project
+> mkdir ./Path-finder
+> cd ./Path-finder
 > git clone \
-    ADD_GIT_LINK \
-    project_name
-> cd project_name
+    https://github.com/Reivaxmar/Path-finder.git \
+    Path-finder
+> cd Path-finder
 ```
 
 Great! Now you have the project, now you just need to build it:
 ```bash
 > bash ./build.sh
 > make
-> ./proj
-Hello, world!
+> ./pathfinder 5
 ```
 
 Now your project should be up and running.
@@ -31,9 +30,10 @@ Now your project should be up and running.
 
 ## External libraries
 There is no need to have them installed, CMake will do it:
-- Dep1
-- Dep2
+- SFML
 
 ## TODOs
-- [x] Implement hello world
-- [ ] Do everything else
+- [x] Implement room graphics
+- [x] Implement opening and closing
+- [x] Implement algorithms for shortest and longest paths
+- [ ] Make it fast (impossible because NP-complete?)

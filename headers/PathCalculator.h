@@ -37,7 +37,7 @@ struct Room {
 class PathCalculator {
 public:
     PathCalculator(Vector2i _siz);
-    void Update();
+    void Update(RenderWindow& window);
     // vector<int> CalculatePaths();
     Vector2i getSize();
     Room& getRoom(Vector2i pos);
@@ -46,7 +46,9 @@ public:
     int num_paths;
     // Thread calc_thread;
 private:
-    int backtrack(vector<vector<bool>>& visited, Vector2i pos, Vector2i prev);
+    vector<Vector2i> shortest_path(Vector2i from, Vector2i to);
+    vector<Vector2i> longest_path(Vector2i from, Vector2i to, vector<vector<bool>>& visited, vector<Vector2i>& path, vector<Vector2i>& longestPathVec);
+    // int backtrack(queue<Vector2i>& q, vector<vector<bool>>& visited, Vector2i pos, Vector2i prev);
     Vector2i m_roomSize;
     vector<vector<Room>> m_grid;
 };

@@ -76,12 +76,12 @@ void PathRenderer::Draw(RenderWindow& window) {
         }
     }
 
-    if(update) Update();
+    if(update) Update(window);
 
     // Set if last left pressed
     m_LeftBefore = Mouse::isButtonPressed(Mouse::Left);
 }
 
-void PathRenderer::Update() {
-    m_pathCalc.Update();
+void PathRenderer::Update(RenderWindow& window) {
+    m_pathCalc.Update(window);
 }

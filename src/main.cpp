@@ -6,14 +6,15 @@ using namespace std;
 
 #include "PathRenderer.h"
 
-int main() {
-    // cout << "Enter width and height: ";
-    int n;
-    cout << "Enter size of the grid: ";
-    cin >> n;
-    // int n = 7;
-
-    // PathCalculator pthCalc(Vector2i(n, n));
+int main(int argc, char* argv[]) {
+    
+    if(argc < 2) {
+        cout << "Missing args!" << endl;
+        cout << "Usage: ./pathfinder <size>" << endl;
+        return -1;
+    }
+    int n = argv[1][0] - '0';
+    // cout << "Size is: " << n << endl;
     PathRenderer pthRend(Vector2i(n, n));
 
     RenderWindow window(VideoMode(500, 500), "Pathfinder");
@@ -31,12 +32,5 @@ int main() {
 
         window.display();
     }
-    
-    // pthCalc.Update(window);
-
-    
-
-
-    // RenderWindow window(VideoMode(800, 800), "Pathfinder");
 
 }
